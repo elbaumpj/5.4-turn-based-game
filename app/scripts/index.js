@@ -27,8 +27,10 @@ $(function(){
     'villains': villains
   };
 
+
 $('.hero-container').html(gamedisplay(context));
 $('.villain-container').html(gamedisplay(context2));
+
 
 // Event Handlers
 $(document).on('hero:selected', function (event, hero) {
@@ -38,6 +40,7 @@ $(document).on('hero:selected', function (event, hero) {
 $(document).on('villain:selected', function(event, villain){
   selectedVillain = villain;
 });
+
 
 // $(document).on('attack:villain', function(event){
 //   var damage = Math.floor(Math.random()* 10);
