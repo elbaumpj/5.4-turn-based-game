@@ -1,42 +1,49 @@
 var $ = require('jquery');
 var _ = require('underscore');
 var models = require('./models');
-var listTemplate = require('../templates/listTemplate.hbs');
+var gamedisplay= require('../templates/gamedisplay.hbs');
 
 $(function(){
 
 var selectedHero;
 
 var heroes = [
-  new.models.Hero({name: 'Pistol Pete', image:}),
-  new.models.Hero({name: 'Sheriff Dan', image:}),
-  new.models.Hero({name: 'Red Wolf', image:})
+  new models.Hero({name: 'Pistol Pete', image: 'https://unsplash.it/100/100'}),
+  new models.Hero({name: 'Sheriff Dan', image: "https://unsplash.it/100/100"}),
+  new models.Hero({name: 'Red Wolf', image: "https://unsplash.it/100/100"})
 ];
 
 var villains = [
-  new.models.Villain({name: 'Pancho Villa', image:}),
-  new.models.Villain({name: 'Jesse James', image:}),
-  new.models.Villain({name: 'Tombstone', image:s})
+  new models.Villain({name: 'Pancho Villa', image:"https://unsplash.it/100/100"}),
+  new models.Villain({name: 'Jesse James', image:"https://unsplash.it/100/100"}),
+  new models.Villain({name: 'Tombstone', image:"https://unsplash.it/100/100"})
 ];
 
 var context = {
   'heroes': heroes,
-  'villains': villains
-}
+};
 
-$('game-display').on('click', function(event){
+var context2 = {
+  'villains': villains
+};
+
+$('.hero-container').html(gamedisplay(context));
+$('.villain-container').html(gamedisplay(context2));
+
+$('.hero-container').on('click', function(event){
   event.preventDefault();
 
   var $heroSelect = $(this);
   var heroName = $heroSelect.data('hero-name');
-  selectedHero = _.filter(heroes, {'name': heroName})[0];
+  selectedHero = _.filter(heroes, {'hero-name': heroName})[0];
 
-  console.log(selectedHero);
+  console.log(heroName);
 
 });
 
 $('.fire-button').click(function(event){
   event.preventDefault();
+  console.log(event);
 
   if(selectedHero) {
     alert('Bang!' + selectedHero.attck());
