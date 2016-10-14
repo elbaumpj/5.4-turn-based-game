@@ -5,37 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
     <title>Wild West Avengers</title>
     <link rel="stylesheet" href="css/app.css">
+    <link href="https://fonts.googleapis.com/css?family=Rye" rel="stylesheet">
+
   </head>
   <body>
 
 
     <div class="container">
-      <h1>Wild West Avengers</h1>
+      <h1 class="game-title">Wild West Avengers</h1>
       <h2></h2>
 
-      <div class="game-display"></div>
+      <div class="game-display">
 
-
-      <div class="row">
-        <div class="col-md-6 hero">
-          <div class="hero-container">
-<!--hero template goes here -->
+          <div class="row players">
+            <div class="col-md-6 hero">
+              <div class="hero-container">
+    <!--hero template goes here -->
+              </div>
+            </div>
+            <div class="col-md-6 villain">
+              <div class="villain-container">
+                <h2 class="villain-name"></h2>
+                <img id="villain-pic" src="" alt="">
+    <!--villain template goes here -->
+              </div>
+            </div>
           </div>
-        </div>
-
-
-
-        <div class="col-md-6 villain">
-          <div class="villain-container">
-            <h2 class="villain-name"></h2>
-            <img id="villain-pic" src="" alt="">
-<!--villain template goes here -->
+          <div class="row players-stats">
+            <div class="col-md-6">
+              <div class="health-container"><span>hero: </span><span class="hero-health">50</span></div>
+            </div>
+            <div class="col-md-6">
+              <div class="health-container"><span>villain: </span><span class="villain-health">50</span></div>
+            </div>
           </div>
-        </div>
+          <div class="row">
+            <div class="col-md-12">
+              <button type="button" class="fire-button" name="button">FIRE</button>
+            </div>
+          </div>
       </div>
-      <div class="health-container"><span>hero: </span><span class="hero-health">50</span></div>
-      <div class="health-container"><span>villain: </span><span class="villain-health">50</span></div>
-      <button type="button" class="fire-button" name="button">FIRE!</button>
     </div>
 
 

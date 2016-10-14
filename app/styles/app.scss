@@ -11,11 +11,58 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 *::after {
   box-sizing: border-box;
 }
-
+body{
+}
 img {
   max-width: 100%;
 }
 
 .hidden{
   display: none;
+}
+body{
+  background-color: #000000;
+}
+
+.container{
+  width: 1130px;
+
+  background-image: url("../images/game-background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.game-display{
+  margin: 0 auto;
+  width: 620px;
+  height: 415px;
+  .players{
+    padding-top: 20px;
+  }
+  .players-stats{
+    padding-top: 40px;
+  }
+  .fire-button{
+    position: relative;
+    left: 280px;
+    margin-top: 30px;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    border: 10px solid #4A2F18;
+    background-color: #DFCB7C;
+    font-family: 'Rye', cursive;
+    font-size: 25px;
+
+  }
+}
+
+h1{
+  height: 80px;
+  padding-top: 10px;
+  text-align: center;
+  font-family: 'Rye', cursive;
+  font-size: 50px;
+  background-color: #ffffff;
+  color: #000000;
 }

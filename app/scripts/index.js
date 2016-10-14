@@ -8,15 +8,15 @@ $(function(){
   var selectedVillain;
 
   var heroes = [
-    new models.Hero({name: 'Pistol Pete', image: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTfWIGt7Hy6rC67yefLP1lFfdPcGD0M5TPDQWJuzZaXLw1NAH5H"}),
-    new models.Hero({name: 'Sheriff Dan', image: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQWEIA2MSMCzVYUrVgkna7WPb9HSBYdUPaZbWVxqV6xNUemq6-u"}),
-    new models.Hero({name: 'Red Wolf', image: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ1BCKxEECzQZ0hSq-BXOlPcHMSymb-v9AQzyurDDSGwPsb2ikjoQ"})
+    new models.Hero({name: 'Pistol Pete', image: "./images/PistolPete.png"}),
+    new models.Hero({name: 'Sheriff Dan', image: "./images/sheriff-dan.png"}),
+    new models.Hero({name: 'Red Wolf', image: "./images/red-wolf.png"})
   ];
 
   var villains = [
-    new models.Villain({name: 'Pancho Villa', image:"https://unsplash.it/50/50"}),
-    new models.Villain({name: 'Jesse James', image:"https://unsplash.it/50/50"}),
-    new models.Villain({name: 'Tombstone', image:"https://unsplash.it/50/50"})
+    new models.Villain({name: 'Pancho Villa', image:"./images/pancho-villa.png"}),
+    new models.Villain({name: 'Jesse James', image:"./images/jesse-james.png"}),
+    new models.Villain({name: 'Tombstone', image:"./images/tombstone.png"})
   ];
 
   var context = {
@@ -63,9 +63,10 @@ $(document).on('villain:selected', function(event, villain){
     var randomVillain = Math.floor(Math.random()*villains.length);
 
     selectedHero = _.filter(heroes, {'name': heroName})[0];
+    // $(this).addClass('col-md-8');
 
     $(this).parents().siblings('.hero-info').hide();
-  
+
 
     //Villain selection and html attributes
     selectedVillain = villains[randomVillain];
