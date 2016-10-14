@@ -1,10 +1,15 @@
-
-        <img src={{image}} alt="" data-hero-name="{{name}}" />
+{{#each heroes}}
+<div class="hero-info">
+        <img src={{image}} alt="{{name}}" data-hero-name="{{name}}" />
         <h2>{{name}}</h2>
         <span class="health">{{health}}</span>
+</div>
+{{/each}}
 
-
-
-        <img src={{image}} alt="" data-villain-name="{{name}}" />
+{{#each villains}}
+<div class="villain-info">
+        <img src={{image}} alt="{{name}}" data-villain-name="{{name}}" />
         <h2>{{name}}</h2>
         <span class="health">{{health}}</span>
+</div>
+{{/each}}

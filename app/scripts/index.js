@@ -30,7 +30,7 @@ var context2 = {
 $('.hero-container').html(gamedisplay(context));
 $('.villain-container').html(gamedisplay(context2));
 
-$('.hero-container').on('click', function(event){
+$('img').on('click', function(event){
   event.preventDefault();
 
   var $heroSelect = $(this);
@@ -39,25 +39,19 @@ $('.hero-container').on('click', function(event){
 
   console.log($heroSelect);
   console.log(heroName);
-
-
 });
 
 $('.fire-button').click(function(event){
   event.preventDefault();
+  console.log(event);
   $(document).trigger('attack:villain');
-
   if(selectedHero) {
     alert('Bang!' + selectedHero.attck());
-
 
     window.setTimeout(function(){
       var attack = selectedHero.attack();
     }, 2000);
-
   }
 
   });
-
-
 });
