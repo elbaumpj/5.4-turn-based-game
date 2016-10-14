@@ -37,13 +37,15 @@ $('.hero-container').on('click', function(event){
   var heroName = $heroSelect.data('hero-name');
   selectedHero = _.filter(heroes, {'hero-name': heroName})[0];
 
+  console.log($heroSelect);
   console.log(heroName);
+
 
 });
 
 $('.fire-button').click(function(event){
   event.preventDefault();
-  console.log(event);
+  $(document).trigger('attack:villain');
 
   if(selectedHero) {
     alert('Bang!' + selectedHero.attck());
