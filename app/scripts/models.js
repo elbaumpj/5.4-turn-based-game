@@ -3,7 +3,7 @@ var $ = require('jquery');
 
 function Character(config) {
   config = config || {};
-  $.extend(this, config);
+  _.extend(this, config);
 }
 var selectedHero;
  var selectedVillain;
