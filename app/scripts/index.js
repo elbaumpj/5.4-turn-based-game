@@ -78,7 +78,10 @@ $(document).on('villain:selected', function(event, villain){
 
     window.setTimeout(function(){
       selectedVillain.attack(selectedHero);
+      console.log(selectedVillain);
     }, 2000);
+
+
 
 
   });
