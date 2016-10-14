@@ -3,20 +3,24 @@ var _ = require('underscore');
 var models = require('./models');
 var gamedisplay= require('../templates/gamedisplay.hbs');
 
+window.selectedHero;
+window.selectedVillain;
+
 $(function(){
 
-var selectedHero;
+
+// console.log(selectedHero);
 
 var heroes = [
-  new models.Hero({name: 'Pistol Pete', image: 'https://unsplash.it/100/100'}),
-  new models.Hero({name: 'Sheriff Dan', image: "https://unsplash.it/100/100"}),
-  new models.Hero({name: 'Red Wolf', image: "https://unsplash.it/100/100"})
+  new models.Hero({name: 'Pistol Pete', image: "#"}),
+  new models.Hero({name: 'Sheriff Dan', image: "#"}),
+  new models.Hero({name: 'Red Wolf', image: "#"})
 ];
 
 var villains = [
-  new models.Villain({name: 'Pancho Villa', image:"https://unsplash.it/100/100"}),
-  new models.Villain({name: 'Jesse James', image:"https://unsplash.it/100/100"}),
-  new models.Villain({name: 'Tombstone', image:"https://unsplash.it/100/100"})
+  new models.Villain({name: 'Pancho Villa', image:"#"}),
+  new models.Villain({name: 'Jesse James', image:"#"}),
+  new models.Villain({name: 'Tombstone', image:"#"})
 ];
 
 var context = {
@@ -35,21 +39,34 @@ $('img').on('click', function(event){
 
   var $heroSelect = $(this);
   var heroName = $heroSelect.data('hero-name');
-  selectedHero = _.filter(heroes, {'hero-name': heroName})[0];
 
-  console.log($heroSelect);
-  console.log(heroName);
+  // console.warn(heroName);
+
+
+  window.selectedHero = _.filter(heroes, {'name': heroName})[0];
+
+  // console.log($heroSelect);
+  // console.log(heroName);
+  console.log(selectedHero);
+
+  var selectedVillain = function(){
+    var randomVillain = Math.floor(Math.random()*villains.length);
+    console.log(villains[randomVillain]);
+    return villains[randomVillain];
+  };
+  selectedVillain();
+
 });
 
+//why is the attack not happening?
 $('.fire-button').click(function(event){
+  console.log(window.selectedHero);
   event.preventDefault();
-  console.log(event);
   $(document).trigger('attack:villain');
-  if(selectedHero) {
-    alert('Bang!' + selectedHero.attck());
-
+  if(window.selectedHero) {
+    alert('Bang!' + window.selectedVillain.attack());
     window.setTimeout(function(){
-      var attack = selectedHero.attack();
+      var attack = window.selectedHero.attack();
     }, 2000);
   }
 

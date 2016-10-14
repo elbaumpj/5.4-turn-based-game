@@ -5,12 +5,17 @@ function Character(config) {
   config = config || {};
   $.extend(this, config);
 }
-Character.prototype.attack = function(villain){
+var selectedHero;
+ var selectedVillain;
+
+//what do we pass in?
+Character.prototype.attack = function(hero){
   var damage = Math.floor(Math.random()* 10);
   // this.health = this.health - damage;
-  villain.health = villain.health - this.attack;
+  Villain.health = Villain.health - this.attack;
   $(document).trigger('health:change');
   console.log(damage);
+  console.log(Villain.health);
 };
 
 function Hero(config) {
@@ -37,6 +42,7 @@ $(document).on('hero:selected', function (event, hero) {
 $(document).on('villain:selected', function(event, villain){
   selectedVillain = villain;
 });
-$(document).on('attack:character', function(event){
-  selectedHero.attack(selectedVillain);
+$(document).on('attack:villain', function(event){
+  console.log(window.selectedHero);
+  window.selectedHero.attack(selectedVillain);
 });
