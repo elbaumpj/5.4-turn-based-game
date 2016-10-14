@@ -11,11 +11,8 @@ var selectedHero;
 //what do we pass in?
 Character.prototype.attack = function(hero){
   var damage = Math.floor(Math.random()* 10);
-  // this.health = this.health - damage;
-  Villain.health = Villain.health - this.attack;
+  this.health = this.health - damage;
   $(document).trigger('health:change');
-  console.log(damage);
-  console.log(Villain.health);
 };
 
 function Hero(config) {
@@ -35,14 +32,3 @@ module.exports = {
   'Hero': Hero,
   'Villain': Villain
 };
-
-$(document).on('hero:selected', function (event, hero) {
-  selectedHero = hero;
-});
-$(document).on('villain:selected', function(event, villain){
-  selectedVillain = villain;
-});
-$(document).on('attack:villain', function(event){
-  console.log(window.selectedHero);
-  window.selectedHero.attack(selectedVillain);
-});

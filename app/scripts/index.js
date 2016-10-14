@@ -3,72 +3,80 @@ var _ = require('underscore');
 var models = require('./models');
 var gamedisplay= require('../templates/gamedisplay.hbs');
 
-window.selectedHero;
-window.selectedVillain;
-
 $(function(){
+  var selectedHero;
+  var selectedVillain;
 
+  var heroes = [
+    new models.Hero({name: 'Pistol Pete', image: "#"}),
+    new models.Hero({name: 'Sheriff Dan', image: "#"}),
+    new models.Hero({name: 'Red Wolf', image: "#"})
+  ];
 
-// console.log(selectedHero);
+  var villains = [
+    new models.Villain({name: 'Pancho Villa', image:"#"}),
+    new models.Villain({name: 'Jesse James', image:"#"}),
+    new models.Villain({name: 'Tombstone', image:"#"})
+  ];
 
-var heroes = [
-  new models.Hero({name: 'Pistol Pete', image: "#"}),
-  new models.Hero({name: 'Sheriff Dan', image: "#"}),
-  new models.Hero({name: 'Red Wolf', image: "#"})
-];
+  var context = {
+    'heroes': heroes,
+  };
 
-var villains = [
-  new models.Villain({name: 'Pancho Villa', image:"#"}),
-  new models.Villain({name: 'Jesse James', image:"#"}),
-  new models.Villain({name: 'Tombstone', image:"#"})
-];
-
-var context = {
-  'heroes': heroes,
-};
-
-var context2 = {
-  'villains': villains
-};
+  var context2 = {
+    'villains': villains
+  };
 
 $('.hero-container').html(gamedisplay(context));
 $('.villain-container').html(gamedisplay(context2));
 
-$('img').on('click', function(event){
-  event.preventDefault();
-
-  var $heroSelect = $(this);
-  var heroName = $heroSelect.data('hero-name');
-
-  // console.warn(heroName);
-
-
-  window.selectedHero = _.filter(heroes, {'name': heroName})[0];
-
-  // console.log($heroSelect);
-  // console.log(heroName);
-  console.log(selectedHero);
-
-  var selectedVillain = function(){
-    var randomVillain = Math.floor(Math.random()*villains.length);
-    console.log(villains[randomVillain]);
-    return villains[randomVillain];
-  };
-  selectedVillain();
-
+// Event Handlers
+$(document).on('hero:selected', function (event, hero) {
+  selectedHero = hero;
 });
 
+$(document).on('villain:selected', function(event, villain){
+  selectedVillain = villain;
+});
+
+// $(document).on('attack:villain', function(event){
+//   var damage = Math.floor(Math.random()* 10);
+//   // this.health = this.health - damage;
+//   selectedVillain.health = selectedVillain.health - damage;
+//
+//   $(document).trigger('health:change');
+//
+//   console.log(selectedHero);
+//   selectedHero.attack(selectedVillain);
+// });
+
+
+
+  $('img').on('click', function(event){
+    event.preventDefault();
+
+    var $heroSelect = $(this);
+    var heroName = $heroSelect.data('hero-name');
+    var randomVillain = Math.floor(Math.random()*villains.length);
+
+    selectedHero = _.filter(heroes, {'name': heroName})[0];
+    selectedVillain = villains[randomVillain];
+
+    console.log(selectedHero);
+    console.log(selectedVillain);
+  });
+
 //why is the attack not happening?
-$('.fire-button').click(function(event){
-  console.log(window.selectedHero);
-  event.preventDefault();
-  $(document).trigger('attack:villain');
-  if(window.selectedHero) {
-    alert('Bang!' + window.selectedVillain.attack());
+  $('.fire-button').click(function(event){
+    console.log(selectedHero);
+    event.preventDefault();
+
+    selectedHero.attack(selectedVillain);
+
     window.setTimeout(function(){
-      var attack = window.selectedHero.attack();
+      selectedVillain.attack(selectedHero);
     }, 2000);
-  }
+
 
   });
 });
