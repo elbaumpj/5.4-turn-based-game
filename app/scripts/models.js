@@ -1,12 +1,10 @@
 var $ = require('jquery');
-
+var _ = require('underscore');
 
 function Character(config) {
   config = config || {};
   _.extend(this, config);
 }
-var selectedHero;
- var selectedVillain;
 
 //what do we pass in?
 Character.prototype.attack = function(hero){
