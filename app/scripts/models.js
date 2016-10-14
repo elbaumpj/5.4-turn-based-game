@@ -14,13 +14,13 @@ Character.prototype.attack = function(hero){
 };
 
 function Hero(config) {
-  this.health = 100;
+  this.health = 50;
   Character.call(this, config);
 }
 Hero.prototype = new Character();
 
 function Villain(config) {
-  this.health = 90;
+  this.health = 50;
   Character.call(this, config);
 }
 Villain.prototype = new Character();
