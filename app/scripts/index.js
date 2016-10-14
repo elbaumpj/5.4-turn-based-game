@@ -93,10 +93,6 @@ $(document).on('villain:selected', function(event, villain){
       console.log(selectedVillain);
       console.log(selectedVillain.health);
     }, 2000);
-
-
   });
-
-
 
 });
