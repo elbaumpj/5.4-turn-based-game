@@ -23,14 +23,7 @@ $(function(){
     'heroes': heroes,
   };
 
-  // var context2 = {
-  //   'villains': villains
-  // };
-
-
 $('.hero-container').html(gamedisplay(context));
-// $('.villain-container').html(gamedisplay(context2));
-
 
 // Event Handlers
 $(document).on('hero:selected', function (event, hero) {
@@ -82,16 +75,29 @@ $(document).on('villain:selected', function(event, villain){
     // console.log(selectedHero);
     event.preventDefault();
 
+var villainHealth = $('.villain-health');
+var heroHealth = $('.hero-health');
+console.log(villainHealth);
+console.log(heroHealth);
+
+
 
     selectedHero.attack(selectedVillain);
-    $('.villain-health').html(selectedVillain.health);
+    // $('.villain-health').html(this.health); dont delete
 
     window.setTimeout(function(){
       selectedVillain.attack(selectedHero);
-      $('.hero-health').html(selectedHero.health);
-      // console.log(selectedVillain);
-      // console.log(selectedVillain.health);
+      // $('.hero-health').html(this.health); dont delete
+      if ($('.hero-health').html !== heroHealth) {
+        $('.hero-health').html(selectedHero.health);
+      }
+      if ($('.villain-health').html !== villainHealth) {
+        $('.villain-health').html(selectedVillain.health);
+      }
+
     }, 2000);
+
+
   });
 
 });
