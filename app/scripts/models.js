@@ -11,6 +11,7 @@ Character.prototype.attack = function(hero){
   var damage = Math.floor(Math.random()* 10);
   this.health = this.health - damage;
   $(document).trigger('health:change');
+  //console.log(this.health);
 };
 
 function Hero(config) {

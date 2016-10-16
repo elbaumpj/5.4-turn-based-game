@@ -9,7 +9,7 @@ $(function(){
 
   var heroes = [
     new models.Hero({name: 'Pistol Pete', image: "./images/PistolPete.png"}),
-    new models.Hero({name: 'Sheriff Dan', image: "./images/sheriff-dan.png"}),
+    new models.Hero({name: 'Sheriff Dan', image: "./sheriff-dan.png"}),
     new models.Hero({name: 'Red Wolf', image: "./images/red-wolf.png"})
   ];
 
@@ -63,7 +63,6 @@ $(document).on('villain:selected', function(event, villain){
     var randomVillain = Math.floor(Math.random()*villains.length);
 
     selectedHero = _.filter(heroes, {'name': heroName})[0];
-    // $(this).addClass('col-md-8');
 
     $(this).parents().siblings('.hero-info').hide();
 
@@ -80,7 +79,7 @@ $(document).on('villain:selected', function(event, villain){
 
 
   $('.fire-button').click(function(event){
-    console.log(selectedHero);
+    // console.log(selectedHero);
     event.preventDefault();
 
 
@@ -90,8 +89,8 @@ $(document).on('villain:selected', function(event, villain){
     window.setTimeout(function(){
       selectedVillain.attack(selectedHero);
       $('.hero-health').html(selectedHero.health);
-      console.log(selectedVillain);
-      console.log(selectedVillain.health);
+      // console.log(selectedVillain);
+      // console.log(selectedVillain.health);
     }, 2000);
   });
 
