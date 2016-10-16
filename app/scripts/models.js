@@ -14,8 +14,12 @@ Character.prototype.attack = function(hero){
   var damage = Math.floor(Math.random()* 10);
   this.health = this.health - damage;
   $(document).trigger('health:change');
-  console.log(this.health);
+  console.log('characters health' + this.health);
 };
+// Villain.prototype.villainDamage = function(hero){
+//   this.health = this.heath;
+//   console.log(this.health);
+// };
 
 function Hero(config) {
   // this.health = 50;
@@ -27,8 +31,9 @@ Hero.prototype = new Character();
 function Villain(config) {
   // this.health = 50;
   Character.call(this, config);
-
 }
+
+
 Villain.prototype = new Character();
 
 

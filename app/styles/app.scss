@@ -25,23 +25,71 @@ body{
 }
 
 .container{
-  width: 1130px;
-
+  width: 1330px;
   background-image: url("../images/game-background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  h1{
+    margin: 0 auto;
+    margin-top: 30px;
+    height: 80px;
+    width: 600px;
+    padding-top: 10px;
+    text-align: center;
+    font-family: 'Rye', cursive;
+    font-size: 55px;
+    color: #ffffff;
+  }
+  .message{
+    margin: 0 auto;
+    color: #DFCB7C;
+    text-align: center;
+    font-family: 'Rye', cursive;
+  }
+}
+.villain{
+  .villain-container{
+    float: right;
+  }
 }
 
 .game-display{
   margin: 0 auto;
   width: 620px;
   height: 415px;
-  .players{
+  .hero-info{
+    position: relative;
+    left: 100px;
+  }
+  .players, h2{
     padding-top: 20px;
+    font-family: 'Rye', cursive;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
   }
-  .players-stats{
-    padding-top: 40px;
+  .hero-image{
+    width: 70px;
+    height: 130px;
+    box-shadow: 1px 0px 49px 0px rgba(231,166,26,1);
   }
+  .hero-info:hover{
+    transform: scale(1.1);
+  }
+
+.villain-container{
+  position: relative;
+  right: 80px;
+}
+
+.health-container{
+  padding-top: 40px;
+  font-family: 'Rye', cursive;
+  text-align: center;
+  font-size: 20px;
+  color: #DFCB7C;
+
+}
   .fire-button{
     position: relative;
     left: 280px;
@@ -53,16 +101,10 @@ body{
     background-color: #DFCB7C;
     font-family: 'Rye', cursive;
     font-size: 25px;
-
+    box-shadow: 1px 0px 49px 0px rgba(231,166,26,1);
   }
 }
 
-h1{
-  height: 80px;
-  padding-top: 10px;
-  text-align: center;
-  font-family: 'Rye', cursive;
-  font-size: 50px;
-  background-color: #ffffff;
-  color: #000000;
+.colt{
+  width: 200px;
 }

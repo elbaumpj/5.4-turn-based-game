@@ -7,9 +7,10 @@ $(function(){
   var selectedHero;
   var selectedVillain;
 
+
   var heroes = [
     new models.Hero({name: 'Pistol Pete', image: "./images/PistolPete.png"}),
-    new models.Hero({name: 'Sheriff Dan', image: "./sheriff-dan.png"}),
+    new models.Hero({name: 'Sheriff Dan', image: "./images/sheriff-dan.png"}),
     new models.Hero({name: 'Red Wolf', image: "./images/red-wolf.png"})
   ];
 
@@ -71,33 +72,36 @@ $(document).on('villain:selected', function(event, villain){
   });
 
 
+
+
   $('.fire-button').click(function(event){
     // console.log(selectedHero);
+
     event.preventDefault();
-
-var villainHealth = $('.villain-health');
-var heroHealth = $('.hero-health');
-console.log(villainHealth);
-console.log(heroHealth);
-
-
-
-    selectedHero.attack(selectedVillain);
-    // $('.villain-health').html(this.health); dont delete
 
     window.setTimeout(function(){
       selectedVillain.attack(selectedHero);
       // $('.hero-health').html(this.health); dont delete
-      if ($('.hero-health').html !== heroHealth) {
+      if ($('.hero-health').html !== selectedHero.health) {
         $('.hero-health').html(selectedHero.health);
       }
-      if ($('.villain-health').html !== villainHealth) {
-        $('.villain-health').html(selectedVillain.health);
-      }
-
+      console.log("hero health" +selectedHero.health);
     }, 2000);
 
 
   });
+  $('.fire-button').click(function(event){
+    // console.log(selectedHero);
+    event.preventDefault();
+    selectedHero.attack(selectedVillain);  // $('.hero-health').html(this.health); dont delete
+
+      // if($('.villain-health').html == selectedVillain.health) {
+      //     $('.villain-health').html(selectedVillain.health);
+          console.log("test" + selectedVillain.health);
+      //  }
+      if(selectedHero.health <= 0){
+        $('.message').html( "You Lose");
+      }
+    });
 
 });
