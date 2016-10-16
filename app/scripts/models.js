@@ -17,6 +17,7 @@ Character.prototype.attack = function(hero){
 function Hero(config) {
   this.health = 50;
   Character.call(this, config);
+  // console.log(this.health);
 }
 Hero.prototype = new Character();
 
