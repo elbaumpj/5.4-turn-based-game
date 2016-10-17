@@ -35,6 +35,7 @@ $(document).on('villain:selected', function(event, villain){
   selectedVillain = villain;
 });
 
+
 $('img').on('click', function(event){
     event.preventDefault();
 
@@ -54,33 +55,34 @@ $('img').on('click', function(event){
     console.log(selectedVillain);
 });
 
+$(document).on('health:change', function(){
+  $('#villain-health').html(selectedVillain.health);
+});
+
+$(document).on('health:change', function(){
+  $('.hero-health').html(selectedHero.health);
+});
+
   $('.fire-button').click(function(event){
     event.preventDefault();
-    window.setTimeout(function(){
-      selectedVillain.attack(selectedHero);
-      // $('.hero-health').html(this.health); dont delete
-      if ($('.hero-health').html !== selectedHero.health) {
-        $('.hero-health').html(selectedHero.health);
-      }
-      $('#gun-shot').get(0).play();
-      console.log("hero health" +selectedHero.health);
-    }, 4000);
-
-    if(selectedHero.health <= 0){
-      $('.message').html("You Lose!");
-    }
-  });
-
-  $('.fire-button').click(function(event){
-      $('#gun-shot').get(0).play();
-      event.preventDefault();
-      selectedHero.attack(selectedVillain);
-      $('.villain-health').html(selectedVillain.health);
-      console.log("fire at villain" + selectedVillain.health);
+    $('#gun-shot').get(0).play();
+    event.preventDefault();
+    selectedVillain.attack(selectedHero);
+    // console.log("fire at villain" + selectedVillain.health);
 
       if(selectedVillain.health <= 0){
         $('.message').html("You Win!");
       }
-    });
+
+      window.setTimeout(function(){
+        selectedHero.attack(selectedVillain);
+        $('#gun-shot').get(0).play();
+        // console.log("hero health" + selectedHero.health);
+      }, 2000);
+
+      if(selectedHero.health <= 0){
+        $('.message').html("You Lose!");
+      }
+  });
 
 });

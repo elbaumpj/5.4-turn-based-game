@@ -7,11 +7,11 @@ function Character(config) {
   _.extend(this, config);
 }
 
-Character.prototype.attack = function(hero){
+Character.prototype.attack = function(character){
   var damage = Math.floor(Math.random()* 10);
   this.health = this.health - damage;
   $(document).trigger('health:change');
-  console.log('characters health' + this.health);
+  console.log('characters health' + " " + this.health);
 };
 
 function Hero(config) {
@@ -22,7 +22,6 @@ function Hero(config) {
 Hero.prototype = new Character();
 
 function Villain(config) {
-  // this.health = 50;
   Character.call(this, config);
 }
 
