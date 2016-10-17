@@ -57,10 +57,16 @@ $('img').on('click', function(event){
 // *****************Listeners*****************
 $(document).on('health:change', function(){
   $('#villain-health').html(selectedVillain.health);
+  if(selectedHero.health <= 0){
+    $('.message').html("You Lose!");
+  }
 });
 
 $(document).on('health:change', function(){
   $('.hero-health').html(selectedHero.health);
+  if(selectedVillain.health <= 0){
+    $('.message').html("You Win!");
+  }
 });
 // *****************Triggers*****************
   $('.fire-button').click(function(event){
@@ -70,19 +76,11 @@ $(document).on('health:change', function(){
     selectedVillain.attack(selectedHero);
     // console.log("fire at villain" + selectedVillain.health);
 
-      if(selectedVillain.health <= 0){
-        $('.message').html("You Win!");
-      }
-
       window.setTimeout(function(){
         selectedHero.attack(selectedVillain);
         $('#gun-shot').get(0).play();
         // console.log("hero health" + selectedHero.health);
       }, 2000);
-
-      if(selectedHero.health <= 0){
-        $('.message').html("You Lose!");
-      }
   });
 
 });
