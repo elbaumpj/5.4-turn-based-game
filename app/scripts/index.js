@@ -64,6 +64,7 @@ $(document).on('health:change', function(){
 
 $(document).on('health:change', function(){
   $('.hero-health').html(selectedHero.health);
+  // $('.total-health').width(selectedHero.health/100);
   if(selectedVillain.health <= 0){
     $('.message').html("You Win!");
   }
@@ -72,7 +73,6 @@ $(document).on('health:change', function(){
   $('.fire-button').click(function(event){
     event.preventDefault();
     $('#gun-shot').get(0).play();
-    event.preventDefault();
     selectedVillain.attack(selectedHero);
     // console.log("fire at villain" + selectedVillain.health);
 
@@ -80,7 +80,7 @@ $(document).on('health:change', function(){
         selectedHero.attack(selectedVillain);
         $('#gun-shot').get(0).play();
         // console.log("hero health" + selectedHero.health);
-      }, 2000);
+      }, 4000);
   });
 
 });
