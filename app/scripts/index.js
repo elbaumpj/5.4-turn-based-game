@@ -3,10 +3,10 @@ var _ = require('underscore');
 var models = require('./models');
 var gamedisplay= require('../templates/gamedisplay.hbs');
 
+// *****************Heroes and Villains*****************
 $(function(){
   var selectedHero;
   var selectedVillain;
-
 
   var heroes = [
     new models.Hero({name: 'Pistol Pete', image: "./images/PistolPete.png"}),
@@ -23,10 +23,10 @@ $(function(){
   var context = {
     'heroes': heroes,
   };
-
+// *****************HTML template feed****************
 $('.hero-container').html(gamedisplay(context));
 
-// Event Handlers
+// *****************Event Handlers*****************
 $(document).on('hero:selected', function (event, hero) {
   selectedHero = hero;
 });
@@ -34,7 +34,6 @@ $(document).on('hero:selected', function (event, hero) {
 $(document).on('villain:selected', function(event, villain){
   selectedVillain = villain;
 });
-
 
 $('img').on('click', function(event){
     event.preventDefault();
@@ -55,6 +54,7 @@ $('img').on('click', function(event){
     console.log(selectedVillain);
 });
 
+// *****************Listeners*****************
 $(document).on('health:change', function(){
   $('#villain-health').html(selectedVillain.health);
 });
@@ -62,7 +62,7 @@ $(document).on('health:change', function(){
 $(document).on('health:change', function(){
   $('.hero-health').html(selectedHero.health);
 });
-
+// *****************Triggers*****************
   $('.fire-button').click(function(event){
     event.preventDefault();
     $('#gun-shot').get(0).play();
